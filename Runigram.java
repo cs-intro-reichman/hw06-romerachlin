@@ -74,13 +74,21 @@ public class Runigram {
 			System.out.println();
 		}
 	}
-	
+	public static Color colorValue (int i, int j, Color[][] image) {		
+		Color speColor = new Color (image[i][j].getRed(),image[i][j].getGreen(),image[i][j].getBlue());
+		return speColor;
+			}
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] flippedHorizontally = new Color[image.length][image[0].length];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {	
+					flippedHorizontally[i][j] = image[i][image[0].length-1-j]; 
+			}
+		}
+		return flippedHorizontally;
 	}
 	
 	/**
