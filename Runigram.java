@@ -28,9 +28,15 @@ public class Runigram {
 		print(imageOut);
 
 		// Tests the grey scaling of an image:
+		imageOut = scaled(tinypic, 3,5);
+		System.out.println();
+		print(imageOut);
+
+		// Tests the scaling of an image:
 		imageOut = grayScaled(tinypic);
 		System.out.println();
 		print(imageOut);
+
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
 	}
@@ -142,8 +148,14 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] scaled = new Color[height][width];
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {	
+				scaled[i][j] = image[(i*(image.length/height))][(j*(image[0].length/width))]; 
+				
+			}
+		}
+		return scaled;
 	}
 	
 	/**
