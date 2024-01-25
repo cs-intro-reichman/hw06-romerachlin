@@ -26,6 +26,11 @@ public class Runigram {
 		imageOut = flippedVertically(tinypic);
 		System.out.println();
 		print(imageOut);
+
+		// Tests the grey scaling of an image:
+		imageOut = grayScaled(tinypic);
+		System.out.println();
+		print(imageOut);
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
 	}
@@ -78,10 +83,7 @@ public class Runigram {
 			System.out.println();
 		}
 	}
-	public static Color colorValue (int i, int j, Color[][] image) {		
-		Color speColor = new Color (image[i][j].getRed(),image[i][j].getGreen(),image[i][j].getBlue());
-		return speColor;
-			}
+	
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
@@ -112,19 +114,27 @@ public class Runigram {
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
-		int r = (int)((pixel.getRed())*0.299);
-		int g = (int)((pixel.getGreen())*0.587);
-		int b = (int)((pixel.getBlue())*0.114);
-		Color luminance = new Color(r,g,b);
+		int lum = (int)(((pixel.getRed())*0.299)+((pixel.getGreen())*0.587)+((pixel.getBlue())*0.114));
+		Color luminance = new Color(lum,lum,lum);
 		return luminance;
 	}
-	
+	public static Color colorValue (int i, int j, Color[][] image) {		
+		Color speColor = new Color (image[i][j].getRed(),image[i][j].getGreen(),image[i][j].getBlue());
+		return speColor;
+			}
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] grayScaled = new Color[image.length][image[0].length];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {	
+				Color im = colorValue(i, j, image);
+				Color greySc = luminance(im);
+				grayScaled[i][j] = greySc; 
+			}
+		}
+		return grayScaled;
 	}	
 	
 	/**
