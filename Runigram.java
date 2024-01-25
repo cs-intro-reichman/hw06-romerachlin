@@ -28,10 +28,7 @@ public class Runigram {
 		print(imageOut);
 
 		// Tests the grey scaling of an image:
-		imageOut = scaled(tinypic, 3,5);
-		System.out.println();
-		print(imageOut);
-
+		
 		// Tests the scaling of an image:
 		imageOut = grayScaled(tinypic);
 		System.out.println();
@@ -171,8 +168,11 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int blendR = (int)(alpha*(c1.getRed()+c2.getRed()));
+		int blendG = (int)(alpha*(c1.getGreen()+c2.getGreen()));
+		int blendB = (int)(alpha*(c1.getBlue()+c2.getBlue()));
+		Color blend = new Color(blendR, blendG, blendB);
+		return blend;
 	}
 	
 	/**
